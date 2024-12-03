@@ -17,8 +17,6 @@ function closeUploadImgEsc(evt){
     closeUploadImg();
   }
 }
-
-
 inpimgUploadOverlay.addEventListener('change',() =>{
   openUploadImg ();
 });
