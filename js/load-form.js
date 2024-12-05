@@ -20,18 +20,18 @@ noUiSlider.create(scaleControlInput,{
     max: 100
 
   },
-  start: 50,
-  step: 1
+  start: 100,
+  step: 25
 });
 scaleControlInput.noUiSlider.on('update', () => {
   scaleControlValue.value = `${scaleControlInput.noUiSlider.get()}%`;
 });
 
 btnSmaller.addEventListener('click',() =>{
-  scaleControlInput.noUiSlider.set(scaleControlInput.noUiSlider.get(true) - 1);
+  scaleControlInput.noUiSlider.set(scaleControlInput.noUiSlider.get(true) - 25);
 });
 btnBigger.addEventListener('click', () => {
-  scaleControlInput.noUiSlider.set(scaleControlInput.noUiSlider.get(true) + 1);
+  scaleControlInput.noUiSlider.set(scaleControlInput.noUiSlider.get(true) + 25);
 });
 
 // валидатор
