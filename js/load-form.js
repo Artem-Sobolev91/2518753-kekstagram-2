@@ -45,7 +45,7 @@ hashtagDescription.addEventListener('keydown', (event) => {
 });
 
 const pristine = new Pristine(imgupLoadText,{
-  classTo:'img-upload__text',
+  classTo:'img-upload__field-wrapper',
   errorClass: 'img-upload__field-wrapper--error',
   errorTextParent: 'img-upload__field-wrapper',
   errorTextTag: 'div',
