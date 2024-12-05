@@ -7,6 +7,34 @@ const hashtagInput = imgupLoadText.querySelector('.text__hashtags');
 const hashtagDescription = imgupLoadText.querySelector('.text__description');
 const imgUploadForm = document.querySelector('.img-upload__form');
 const imgUploadSubmit = imgUploadForm.querySelector('.img-upload__submit');
+// фильтры
+
+const scaleControlInput = document.querySelector('.img-upload__scale');
+const btnSmaller = document.querySelector('.scale__control--smaller');
+const btnBigger = document.querySelector('.scale__control--bigger');
+const scaleControlValue = document.querySelector('.scale__control--value');
+
+noUiSlider.create(scaleControlInput,{
+  range: {
+    min: 0,
+    max: 100
+
+  },
+  start: 50,
+  step: 1
+});
+scaleControlInput.noUiSlider.on('update', () => {
+  scaleControlValue.value = `${scaleControlInput.noUiSlider.get()}%`;
+});
+
+btnSmaller.addEventListener('click',() =>{
+  scaleControlInput.noUiSlider.set(scaleControlInput.noUiSlider.get(true) - 1);
+});
+btnBigger.addEventListener('click', () => {
+  scaleControlInput.noUiSlider.set(scaleControlInput.noUiSlider.get(true) + 1);
+});
+
+// валидатор
 function openUploadImg (){
   imgUpload.classList.remove(CLASS_NAME_HIDDEN);
   document.body.classList.add('modal-open');
