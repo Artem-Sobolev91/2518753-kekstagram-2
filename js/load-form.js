@@ -13,6 +13,7 @@ const scaleControlInput = document.querySelector('.img-upload__scale');
 const btnSmaller = document.querySelector('.scale__control--smaller');
 const btnBigger = document.querySelector('.scale__control--bigger');
 const scaleControlValue = document.querySelector('.scale__control--value');
+const imgUploadPreview = document.querySelector('.img-upload__preview img');
 
 noUiSlider.create(scaleControlInput,{
   range: {
@@ -23,16 +24,24 @@ noUiSlider.create(scaleControlInput,{
   start: 100,
   step: 25
 });
+
+function updateScale(){
+  const scaleValue = parseFloat(scaleControlValue.value) / 100;
+  imgUploadPreview.style.transform = `scale(${scaleValue})`;
+}
 scaleControlInput.noUiSlider.on('update', () => {
-  scaleControlValue.value = `${scaleControlInput.noUiSlider.get()}%`;
+  scaleControlValue.value = `${scaleControlInput.noUiSlider.get()}`;
 });
 
 btnSmaller.addEventListener('click',() =>{
   scaleControlInput.noUiSlider.set(scaleControlInput.noUiSlider.get(true) - 25);
+  updateScale();
 });
 btnBigger.addEventListener('click', () => {
   scaleControlInput.noUiSlider.set(scaleControlInput.noUiSlider.get(true) + 25);
+  updateScale();
 });
+
 
 // валидатор
 function openUploadImg (){
