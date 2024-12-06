@@ -13,7 +13,7 @@ const btnBigger = document.querySelector('.scale__control--bigger');
 const scaleControlValue = document.querySelector('.scale__control--value');
 const imgUploadPreview = document.querySelector('.img-upload__preview img');
 // фильтры
-const effectsPreview = document.querySelectorAll('input[name="effect"]');
+const effectsPreview = document.querySelectorAll('.effects__radio');
 const effectPreview = document.querySelector('.effects__preview');
 
 const imgUploadEffect = document.querySelector('.effect-level__value');
