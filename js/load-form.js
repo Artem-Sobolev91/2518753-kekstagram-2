@@ -1,4 +1,5 @@
 import {CLASS_NAME_HIDDEN} from'./util.js';
+
 const imgUpload = document.querySelector('.img-upload__overlay');
 const uploadFile = document.querySelector('#upload-file');
 const btnImgUploadClose = document.querySelector('#upload-cancel');
@@ -14,30 +15,19 @@ const scaleControlValue = document.querySelector('.scale__control--value');
 const imgUploadPreview = document.querySelector('.img-upload__preview img');
 // фильтры
 const effectsPreview = document.querySelectorAll('.effects__radio');
-const effectPreview = document.querySelector('.effects__preview');
-
-const imgUploadEffect = document.querySelector('.effect-level__value');
-const effectsChrome = document.querySelector('#effect-chrome');
-const effectsSepia = document.querySelector('#effect-sepia');
-const effectsMarvin = document.querySelector('#effect-marvin');
-const effectsPhobos = document.querySelector('#effect-phobos');
-const effectsHeat = document.querySelector('#effect-heat');
-const effectsNone = document.querySelector('#effect-none');
+const effectsContainer = document.querySelector('.effect-level__slider');
+const effectLevelValue = document.querySelector('.effect-level__value');
 
 
-noUiSlider.create(imgUploadEffect,{
+noUiSlider.create(effectsContainer, {
+  start: [20, 80],
+  connect: true,
   range: {
-    min: 0,
-    max: 1
-  },
-  start: 0.5,
-  step: 0.1
+    'min': 0,
+    'max': 100
+  }
 });
 
-function updateEffectLevel(parametrEffect){
-  const effectValue = parseFloat(parametrEffect[0]);
-  imgUploadPreview.style.filter = `${parametrEffect}(${effectValue})`;
-}
 
 effectsPreview.forEach((effectChecked) => {
   effectChecked.onchange = function() {
