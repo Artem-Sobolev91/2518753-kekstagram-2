@@ -19,26 +19,28 @@ const effectsContainer = document.querySelector('.effect-level__slider');
 const effectLevelValue = document.querySelector('.effect-level__value');
 
 
-noUiSlider.create(effectsContainer, {
-  start: [20, 80],
-  connect: true,
+noUiSlider.create(effectsContainer,{
   range: {
-    'min': 0,
-    'max': 100
-  }
+    min: 0,
+    max: 1
+
+  },
+  start: 1,
+  step: 0.1
 });
 effectsContainer.noUiSlider.on('update', (values) => {
   effectLevelValue.value = values[0];
   // updateEffectLevel();
 });
-// function updateEffectLevel(){
-
-// }
+function updateEffectLevel(){
+  const parametr = effectsContainer.noUiSlider.get();
+  imgUploadPreview.style.filter = `grayscale(${(parametr)})`;
+}
 
 
 effectsContainer.noUiSlider.on('update', () => {
   effectLevelValue.value = effectsContainer.noUiSlider.get();
-  imgUploadPreview.style.filter = `grayscale(${(effectLevelValue)})`;
+  updateEffectLevel();
 });
 
 
