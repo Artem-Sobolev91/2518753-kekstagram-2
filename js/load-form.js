@@ -27,7 +27,24 @@ noUiSlider.create(effectsContainer, {
     'max': 100
   }
 });
+effectsContainer.noUiSlider.on('update', (values) => {
+  effectLevelValue.value = values[0];
+  // updateEffectLevel();
+});
+// function updateEffectLevel(){
 
+// }
+
+
+effectsContainer.noUiSlider.on('update', () => {
+  effectLevelValue.value = effectsContainer.noUiSlider.get();
+  imgUploadPreview.style.filter = `grayscale(${(effectLevelValue)})`;
+});
+
+
+// Обновление стилей изображения:
+// Создайте функцию, которая будет обновлять стиль фильтра изображения на основе выбранного эффекта и значения ползунка.
+// Для каждого эффекта используйте соответствующий CSS-фильтр (например, grayscale, sepia, invert, blur, brightness).
 
 effectsPreview.forEach((effectChecked) => {
   effectChecked.onchange = function() {
