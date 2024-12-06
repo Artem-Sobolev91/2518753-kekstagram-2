@@ -6,15 +6,50 @@ const imgupLoadText = document.querySelector('.img-upload__text');
 const hashtagInput = imgupLoadText.querySelector('.text__hashtags');
 const hashtagDescription = imgupLoadText.querySelector('.text__description');
 const imgUploadForm = document.querySelector('.img-upload__form');
-const imgUploadSubmit = imgUploadForm.querySelector('.img-upload__submit');
-// фильтры
-
+// масштаб
 const scaleControlInput = document.querySelector('.img-upload__scale');
 const btnSmaller = document.querySelector('.scale__control--smaller');
 const btnBigger = document.querySelector('.scale__control--bigger');
 const scaleControlValue = document.querySelector('.scale__control--value');
 const imgUploadPreview = document.querySelector('.img-upload__preview img');
+// фильтры
+const effectsPreview = document.querySelectorAll('input[name="effect"]');
+const effectPreview = document.querySelector('.effects__preview');
 
+const imgUploadEffect = document.querySelector('.effect-level__value');
+const effectsChrome = document.querySelector('#effect-chrome');
+const effectsSepia = document.querySelector('#effect-sepia');
+const effectsMarvin = document.querySelector('#effect-marvin');
+const effectsPhobos = document.querySelector('#effect-phobos');
+const effectsHeat = document.querySelector('#effect-heat');
+const effectsNone = document.querySelector('#effect-none');
+
+
+noUiSlider.create(imgUploadEffect,{
+  range: {
+    min: 0,
+    max: 1
+  },
+  start: 0.5,
+  step: 0.1
+});
+
+function updateEffectLevel(parametrEffect){
+  const effectValue = parseFloat(parametrEffect[0]);
+  imgUploadPreview.style.filter = `${parametrEffect}(${effectValue})`;
+}
+
+effectsPreview.forEach((effectChecked) => {
+  effectChecked.onchange = function() {
+    effectsPreview.forEach((effect) => {
+      imgUploadPreview.classList.remove(`effects__preview--${effect.value}`);
+    });
+
+    imgUploadPreview.classList.add(`effects__preview--${effectChecked.value}`);
+  };
+});
+
+// масштаб
 noUiSlider.create(scaleControlInput,{
   range: {
     min: 0,
