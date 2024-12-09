@@ -30,33 +30,124 @@ noUiSlider.create(effectsContainer,{
 });
 effectsContainer.noUiSlider.on('update', (values) => {
   effectLevelValue.value = values[0];
-  // updateEffectLevel();
 });
-function updateEffectLevel(){
-  const parametr = effectsContainer.noUiSlider.get();
-  imgUploadPreview.style.filter = `grayscale(${(parametr)})`;
-}
+
+effectsPreview.forEach((effectChecked) => {
+  effectChecked.addEventListener('change',()=>{
+    const selectEffect = effectChecked.value;
+    imgUploadPreview.className = '';
+    imgUploadPreview.classList.add(`effect__preview--${selectEffect}`);
 
 
-effectsContainer.noUiSlider.on('update', () => {
-  effectLevelValue.value = effectsContainer.noUiSlider.get();
-  updateEffectLevel();
+    if (selectEffect !== 'none') {
+      imgUploadPreview.classList.add(`effect__preview--${selectEffect}`);
+
+      switch(selectEffect){
+        case 'chrome':
+          effectsContainer.noUiSlider.updateOptions({
+            range:{
+              min:0,
+              max:1
+            },
+            step:0.1,
+            start:0
+
+          });
+          effectsContainer.noUiSlider.on('update',(evt)=>{
+            imgUploadPreview.style.filter = `grayscale(${evt[0]})`;
+          });
+          break;
+        case 'marvin':
+          effectsContainer.noUiSlider.updateOptions({
+            range:{
+              min:0,
+              max:100
+            },
+            step:1,
+            start:0
+
+          });
+          effectsContainer.noUiSlider.on('update',(evt)=>{
+            imgUploadPreview.style.filter = `invert(${evt[0]}%)`;
+          });
+          break;
+
+        case'sepia':
+          effectsContainer.noUiSlider.updateOptions({
+            range:{
+              min:0,
+              max:1
+            },
+            step:0.1,
+            start:0
+
+          });
+          effectsContainer.noUiSlider.on('update',(evt)=>{
+            imgUploadPreview.style.filter = `sepia(${evt[0]})`;
+          });
+          break;
+
+        case'phobos':
+          effectsContainer.noUiSlider.updateOptions({
+            range:{
+              min:0,
+              max:3
+            },
+            step:0.1,
+            start:0
+
+          });
+          effectsContainer.noUiSlider.on('update',(evt)=>{
+            imgUploadPreview.style.filter = `blur(${evt[0]}px)`;
+          });
+          break;
+
+        case'heat':
+          effectsContainer.noUiSlider.updateOptions({
+            range:{
+              min:1,
+              max:3
+            },
+            step:0.1,
+            start:0
+
+          });
+          effectsContainer.noUiSlider.on('update',(evt)=>{
+            imgUploadPreview.style.filter = `brightness(${evt[0]})`;
+          });
+          break;
+
+        default:
+      }
+    } else {
+      imgUploadPreview.classList.remove(`effect__preview--${selectEffect}`);
+      imgUploadPreview.style.filter = '';
+      effectsContainer.noUiSlider.updateOptions({
+        range:{
+          min:0,
+          max:0
+        },
+        step:0,
+        start:0
+
+      });
+    }
+
+  });
+
 });
+
+
+// function updateEffectLevel(filters,parametrScale){
+//   const parametr = effectsContainer.noUiSlider.get();
+//   imgUploadPreview.style[filter] = `${parametrScale}(${(parametr)})`;
+// }
 
 
 // Обновление стилей изображения:
 // Создайте функцию, которая будет обновлять стиль фильтра изображения на основе выбранного эффекта и значения ползунка.
 // Для каждого эффекта используйте соответствующий CSS-фильтр (например, grayscale, sepia, invert, blur, brightness).
 
-effectsPreview.forEach((effectChecked) => {
-  effectChecked.onchange = function() {
-    effectsPreview.forEach((effect) => {
-      imgUploadPreview.classList.remove(`effects__preview--${effect.value}`);
-    });
-
-    imgUploadPreview.classList.add(`effects__preview--${effectChecked.value}`);
-  };
-});
 
 // масштаб
 noUiSlider.create(scaleControlInput,{
