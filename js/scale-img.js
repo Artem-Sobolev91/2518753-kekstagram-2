@@ -11,7 +11,7 @@ const scale = {
   MAX:100,
   STEP:25
 };
-const updateScale = (value = scale.max) =>{
+const updateScale = (value = scale.MAX) =>{
   imgUploadPreview.style.transform = `scale(${value / 100})`;
   scaleControlValue.value = `${value}%`;
 };
@@ -19,7 +19,7 @@ const updateScale = (value = scale.max) =>{
 const onMinusButtonClick = ()=>{
   const currentValue = parseFloat(scaleControlValue.value);
   let newValue = currentValue - scale.STEP;
-  if(newValue <= scale.MIN){
+  if(newValue < scale.MIN){
     newValue = scale.MIN;
   }
   updateScale(newValue);
@@ -33,5 +33,7 @@ const onPlusButtonClick = ()=>{
   }
   updateScale(newValue);
 };
+export const resetScale = () => updateScale();
+
 btnSmaller.addEventListener('click', onMinusButtonClick);
 btnBigger.addEventListener('click', onPlusButtonClick);

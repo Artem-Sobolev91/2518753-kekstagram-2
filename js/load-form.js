@@ -1,5 +1,6 @@
 import {CLASS_NAME_HIDDEN} from'./util.js';
-
+import{hasKeyEscape} from './util.js';
+import { resetScale } from './scale-img.js';
 const imgUpload = document.querySelector('.img-upload__overlay');
 const uploadFile = document.querySelector('#upload-file');
 const btnImgUploadClose = document.querySelector('#upload-cancel');
@@ -22,8 +23,10 @@ function closeUploadImg(){
   imgUpload.classList.add(CLASS_NAME_HIDDEN);
   document.body.classList.remove('modal-open');
   uploadFile.value = '';
+  resetScale();
+
   uploadFile.removeEventListener('click',closeUploadImg);
-  document.removeEventListener('keydown', closeUploadImgEsc);
+  document.removeEventListener('keydown', closeUploadImg);
 }
 
 function closeUploadImgEsc(evt){
