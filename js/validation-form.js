@@ -1,17 +1,8 @@
+import { hasKeyEscape } from './util';
 const imgupLoadText = document.querySelector('.img-upload__text');
 const hashtagInput = imgupLoadText.querySelector('.text__hashtags');
 const hashtagDescription = imgupLoadText.querySelector('.text__description');
 const imgUploadForm = document.querySelector('.img-upload__form');
-hashtagInput.addEventListener('keydown', (event) => {
-  if (event.key === 'Escape') {
-    event.stopPropagation();
-  }
-});
-hashtagDescription.addEventListener('keydown', (event) => {
-  if (event.key === 'Escape') {
-    event.stopPropagation();
-  }
-});
 
 
 const pristine = new Pristine(imgUploadForm,{
@@ -26,6 +17,7 @@ export const resetForm = ()=>{
   pristine.reset();
   imgUploadForm.reset();
 };
+const onEscape = (event)=>hasKeyEscape(event) && event.stopPropagation();
 
 function validateHashtags(value) {
   const hashtags = value.split(' ');
@@ -73,3 +65,6 @@ imgUploadForm.addEventListener('submit', (event) => {
     event.preventDefault();
   }
 });
+
+[hashtagInput,hashtagDescription].forEach((item) => item.addEventListener('keydown',onEscape));
+
