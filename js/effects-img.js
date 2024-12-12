@@ -5,12 +5,11 @@ const effectsPreview = document.querySelectorAll('.effects__radio');
 const effectsContainer = document.querySelector('.effect-level__slider');
 const effectLevelValue = document.querySelector('.effect-level__value');
 
-function defaultEffects () {
+export function defaultEffects () {
   imgUploadPreview.className = '';
   imgUploadPreview.style = '';
   effectLevelValue.value = '';
   effectsContainer.classList.add(CLASS_NAME_HIDDEN);
-
 }
 
 
@@ -29,6 +28,7 @@ effectsContainer.noUiSlider.on('update', (values) => {
 
 effectsPreview.forEach((effectChecked) => {
   effectChecked.addEventListener('change',()=>{
+    effectsContainer.classList.remove(CLASS_NAME_HIDDEN);
     const selectEffect = effectChecked.value;
     imgUploadPreview.className = '';
     imgUploadPreview.classList.add(`effect__preview--${selectEffect}`);
@@ -55,7 +55,7 @@ effectsPreview.forEach((effectChecked) => {
             max:100
           },
           step:1,
-          start:1
+          start:100
 
         });
         effectsContainer.noUiSlider.on('update',(evt)=>{

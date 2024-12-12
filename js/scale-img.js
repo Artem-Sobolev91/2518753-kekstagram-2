@@ -1,5 +1,4 @@
 
-// const scaleControlInput = document.querySelector('.img-upload__scale');
 const btnSmaller = document.querySelector('.scale__control--smaller');
 const btnBigger = document.querySelector('.scale__control--bigger');
 const scaleControlValue = document.querySelector('.scale__control--value');
