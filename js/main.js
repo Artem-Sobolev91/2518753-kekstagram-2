@@ -2,6 +2,7 @@ import { isMeetingWithinWorkHours } from './functions.js';
 import './create-photos.js';
 import'./load-form.js';
 import './effects-img.js';
+import './validation-form.js';
 import './scale-img.js';
 
 console.log(isMeetingWithinWorkHours('8:00', '10:00', '8:00', 120));
