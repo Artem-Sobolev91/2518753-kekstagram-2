@@ -1,5 +1,5 @@
 import {CLASS_NAME_HIDDEN} from'./util.js';
-import {imgUploadPreview} from'./load-form.js';
+import {imgUploadPreview} from'./scale-img.js';
 
 const effectsPreview = document.querySelectorAll('.effects__radio');
 const effectsContainer = document.querySelector('.effect-level__slider');
@@ -40,8 +40,8 @@ effectsPreview.forEach((effectChecked) => {
             min:0,
             max:1
           },
-          step:0.1,
-          start:0
+          step:1,
+          start:1
 
         });
         effectsContainer.noUiSlider.on('update',(evt)=>{
@@ -55,7 +55,7 @@ effectsPreview.forEach((effectChecked) => {
             max:100
           },
           step:1,
-          start:0
+          start:1
 
         });
         effectsContainer.noUiSlider.on('update',(evt)=>{
@@ -70,7 +70,7 @@ effectsPreview.forEach((effectChecked) => {
             max:1
           },
           step:0.1,
-          start:0
+          start:1
 
         });
         effectsContainer.noUiSlider.on('update',(evt)=>{
@@ -85,7 +85,7 @@ effectsPreview.forEach((effectChecked) => {
             max:3
           },
           step:0.1,
-          start:0
+          start:3
 
         });
         effectsContainer.noUiSlider.on('update',(evt)=>{
@@ -100,7 +100,7 @@ effectsPreview.forEach((effectChecked) => {
             max:3
           },
           step:0.1,
-          start:0
+          start:3
 
         });
         effectsContainer.noUiSlider.on('update',(evt)=>{
