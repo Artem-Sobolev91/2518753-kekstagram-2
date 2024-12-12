@@ -1,7 +1,7 @@
 import { hasKeyEscape } from './util';
-const imgupLoadText = document.querySelector('.img-upload__text');
-const hashtagInput = imgupLoadText.querySelector('.text__hashtags');
-const hashtagDescription = imgupLoadText.querySelector('.text__description');
+const imgUpLoadText = document.querySelector('.img-upload__text');
+const hashtagInput = imgUpLoadText.querySelector('.text__hashtags');
+const hashtagDescription = imgUpLoadText.querySelector('.text__description');
 const imgUploadForm = document.querySelector('.img-upload__form');
 
 
