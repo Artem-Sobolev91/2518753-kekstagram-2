@@ -30,7 +30,6 @@ effectsPreview.forEach((effectChecked) => {
   effectChecked.addEventListener('change',()=>{
     effectsContainer.classList.remove(CLASS_NAME_HIDDEN);
     const selectEffect = effectChecked.value;
-    imgUploadPreview.className = '';
     imgUploadPreview.classList.add(`effect__preview--${selectEffect}`);
 
     switch(selectEffect){
