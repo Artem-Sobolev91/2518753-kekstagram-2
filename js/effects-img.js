@@ -12,14 +12,13 @@ export function defaultEffects () {
   effectsContainer.classList.add(CLASS_NAME_HIDDEN);
 }
 
-
 noUiSlider.create(effectsContainer,{
   range: {
     min: 0,
     max: 1
 
   },
-  start: 1,
+  start: 0,
   step: 0.1
 });
 effectsContainer.noUiSlider.on('update', (values) => {
