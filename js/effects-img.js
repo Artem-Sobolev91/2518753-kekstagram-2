@@ -16,7 +16,6 @@ noUiSlider.create(effectsContainer,{
   range: {
     min: 0,
     max: 1
-
   },
   start: 0,
   step: 0.1
@@ -40,7 +39,6 @@ effectsPreview.forEach((effectChecked) => {
           },
           step:1,
           start:1
-
         });
         effectsContainer.noUiSlider.on('update',(evt)=>{
           imgUploadPreview.style.filter = `grayscale(${evt[0]})`;
@@ -54,13 +52,11 @@ effectsPreview.forEach((effectChecked) => {
           },
           step:1,
           start:100
-
         });
         effectsContainer.noUiSlider.on('update',(evt)=>{
           imgUploadPreview.style.filter = `invert(${evt[0]}%)`;
         });
         break;
-
       case'sepia':
         effectsContainer.noUiSlider.updateOptions({
           range:{
@@ -69,13 +65,11 @@ effectsPreview.forEach((effectChecked) => {
           },
           step:0.1,
           start:1
-
         });
         effectsContainer.noUiSlider.on('update',(evt)=>{
           imgUploadPreview.style.filter = `sepia(${evt[0]})`;
         });
         break;
-
       case'phobos':
         effectsContainer.noUiSlider.updateOptions({
           range:{
@@ -84,13 +78,11 @@ effectsPreview.forEach((effectChecked) => {
           },
           step:0.1,
           start:3
-
         });
         effectsContainer.noUiSlider.on('update',(evt)=>{
           imgUploadPreview.style.filter = `blur(${evt[0]}px)`;
         });
         break;
-
       case'heat':
         effectsContainer.noUiSlider.updateOptions({
           range:{
@@ -99,13 +91,11 @@ effectsPreview.forEach((effectChecked) => {
           },
           step:0.1,
           start:3
-
         });
         effectsContainer.noUiSlider.on('update',(evt)=>{
           imgUploadPreview.style.filter = `brightness(${evt[0]})`;
         });
         break;
-
       default:
         defaultEffects();
     }
