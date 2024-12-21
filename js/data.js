@@ -1,4 +1,6 @@
 import{getRandomInteger} from './util.js';
+import{getData} from'./api.js';
+
 const maxId = 25;
 const maxLikes = 200;
 const maxComments = 30;
@@ -37,7 +39,15 @@ export const description = [
   'Работа',
   'Офис'
 ];
+getData().then ((data)=>{
+  console.log(data);
 
+  const dataObj = [];
+  dataObj.push(data);
+  console.log(dataObj);
+}).catch((error)=>{
+  console.error(error);
+});
 export function userPhotos() {
   return Array.from({ length: maxId }, () => ({
     id: getRandomInteger(0, maxId),
@@ -52,3 +62,4 @@ export function userPhotos() {
     }))
   }));
 }
+
