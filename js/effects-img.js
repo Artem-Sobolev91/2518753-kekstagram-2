@@ -4,6 +4,8 @@ import {imgUploadPreview} from'./scale-img.js';
 const effectsPreview = document.querySelectorAll('.effects__radio');
 const effectsContainer = document.querySelector('.effect-level__slider');
 const effectLevelValue = document.querySelector('.effect-level__value');
+const imgUploadSubmit = document.querySelector('.img-upload__submit');
+
 
 export function defaultEffects () {
   imgUploadPreview.className = '';

@@ -15,7 +15,7 @@ function openUploadImg (){
   btnImgUploadClose.addEventListener('click',closeUploadImg);
 }
 
-function closeUploadImg(){
+export function closeUploadImg(){
   imgUpload.classList.add(CLASS_NAME_HIDDEN);
   document.body.classList.remove('modal-open');
   uploadFile.value = '';
